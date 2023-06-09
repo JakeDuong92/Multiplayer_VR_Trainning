@@ -7,6 +7,9 @@ using Photon.Realtime;
 public class ManagerNetwork : Singleton<ManagerNetwork>
 {
     private GameController gameController;
+    //private int userOnline;
+    //public int UserOnline { get => userOnline; set => userOnline = value; }
+
     private void Awake()
     {
         gameController = GameController.Instance;
@@ -25,7 +28,9 @@ public class ManagerNetwork : Singleton<ManagerNetwork>
     }
     public override void OnJoinedRoom()
     {
-        gameController.UserOnline += 1;
-        gameController.eJoinLobby.Invoke();
+        Debug.Log("joined room");
+        //UserOnline += 1;
+        GameController.UserOnline += 1;
+        GameController.eJoinRoom.Invoke();
     }
 }
