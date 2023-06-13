@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,8 +214,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55188284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.12, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -380,7 +380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231900133878180143, guid: d278891fab728644d834be5267c988c2, type: 3}
       propertyPath: m_Radius
-      value: 0.17
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231900133878180143, guid: d278891fab728644d834be5267c988c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8231900133882626249, guid: d278891fab728644d834be5267c988c2, type: 3}
       propertyPath: m_RootOrder
@@ -392,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231900133882626249, guid: d278891fab728644d834be5267c988c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.107
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8231900133882626249, guid: d278891fab728644d834be5267c988c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -536,3 +540,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988dffef9edc623408ab3372ca54faa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1406333796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8231900133883059431, guid: d278891fab728644d834be5267c988c2, type: 3}
+  m_PrefabInstance: {fileID: 664956916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1406333803
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406333796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

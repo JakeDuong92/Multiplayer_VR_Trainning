@@ -6,7 +6,7 @@ using Photon.Pun;
 public class Singleton<T> : MonoBehaviourPunCallbacks where T:MonoBehaviourPunCallbacks
 {
     private static T instance;
-    public static T Instance 
+    public static T Instance
     {
         get
         {
