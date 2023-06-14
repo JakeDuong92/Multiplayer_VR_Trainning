@@ -10,22 +10,29 @@ public class Embody : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        parrentObject = GameObject.FindGameObjectWithTag("PlayerMain");
 
-        
-        //SetColorBody(bodyColor);
-        //gameObject.transform.SetParent(parrentObject.transform);
-        //transform.localPosition = Vector3.zero;
+        while (parrentObject == null)
+        {
+            parrentObject = GameObject.FindGameObjectWithTag("PlayerMain");
+            Debug.Log(parrentObject);
+        }
+        gameObject.transform.SetParent(parrentObject.transform);
+        transform.position = Vector3.zero;
+
     }
     private void Update()
     {
-        if(photonView.IsMine)
+        //SetPositionEmbody();
+    }
+    public void SetPositionEmbody()
+    {
+        if (photonView.IsMine)
         {
             transform.position = parrentObject.transform.position;
-        }     
-    }
-    //public void SetColorBody(Color newColor)
-    //{
-    //    body.GetComponent<MeshRenderer>().material.color = bodyColor;
-    //}
+        }
+        if (GameController.isOnline == false)
+        {
+            transform.position = parrentObject.transform.position;
+        }
+    }   
 }
