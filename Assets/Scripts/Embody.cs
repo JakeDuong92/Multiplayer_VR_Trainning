@@ -12,6 +12,8 @@ public class Embody : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
+        parrentObject = GameObject.FindGameObjectWithTag("EmbodyContainer");
+        gameObject.transform.SetParent(parrentObject.transform);
         Task T2 = FindParrentForEmbody();
         T2.Start();
     }
@@ -32,9 +34,16 @@ public class Embody : MonoBehaviour
     }
     public Task FindParrentForEmbody()
     {
-        Task T1 = new Task(() => {
-            parrentObject = GameObject.FindGameObjectWithTag("PlayerMain");});
-        Debug.Log("Seeking parrent");
+        Task T1 = new Task(() =>
+        {
+            do
+            {
+                Debug.Log("Seeking parrent");
+                parrentObject = GameObject.FindGameObjectWithTag("EmbodyContainer");
+            }
+            while (parrentObject != null);
+            Debug.Log("Findout Parrent Object");
+        });       
         return T1;
     }
 }
