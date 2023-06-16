@@ -2,30 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.Threading.Tasks;
 
 public class Embody : MonoBehaviour
 {
     private PhotonView photonView;
-    private GameObject parrentObject;
+    public GameObject parrentObject;
+    public 
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        parrentObject = GameObject.FindGameObjectWithTag("PlayerMain");
-
-        
-        //SetColorBody(bodyColor);
-        //gameObject.transform.SetParent(parrentObject.transform);
-        //transform.localPosition = Vector3.zero;
+        Task T2 = FindParrentForEmbody();
+        T2.Start();
     }
     private void Update()
     {
-        if(photonView.IsMine)
+        //SetPositionEmbody();
+    }
+    public void SetPositionEmbody()
+    {
+        if (photonView.IsMine)
         {
             transform.position = parrentObject.transform.position;
-        }     
+        }
+        if (GameController.isOnline == false)
+        {
+            transform.position = parrentObject.transform.position;
+        }
     }
-    //public void SetColorBody(Color newColor)
-    //{
-    //    body.GetComponent<MeshRenderer>().material.color = bodyColor;
-    //}
+    public Task FindParrentForEmbody()
+    {
+        Task T1 = new Task(() => {
+            parrentObject = GameObject.FindGameObjectWithTag("PlayerMain");});
+        Debug.Log("Seeking parrent");
+        return T1;
+    }
 }

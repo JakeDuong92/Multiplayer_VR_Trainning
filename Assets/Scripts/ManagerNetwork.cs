@@ -6,16 +6,19 @@ using Photon.Realtime;
 
 public class ManagerNetwork : Singleton<ManagerNetwork>
 {
-    private GameController gameController;
-    //private int userOnline;
-    //public int UserOnline { get => userOnline; set => userOnline = value; }
-
+    public bool isOnline = true;
     private void Awake()
     {
-        gameController = GameController.Instance;
-        if(!PhotonNetwork.IsConnected)
+        if(!PhotonNetwork.IsConnected && isOnline)
         {
             PhotonNetwork.ConnectUsingSettings();
+        }       
+    }
+    private void Start()
+    {
+        if (!isOnline)
+        {
+            GameController.eOnline.Invoke();
         }
     }
     public override void OnConnectedToMaster()
@@ -28,8 +31,7 @@ public class ManagerNetwork : Singleton<ManagerNetwork>
     }
     public override void OnJoinedRoom()
     {
-        Debug.Log("joined room");
-        //UserOnline += 1;
+        Debug.Log("new player joined room");
         GameController.UserOnline += 1;
         GameController.eJoinRoom.Invoke();
     }
