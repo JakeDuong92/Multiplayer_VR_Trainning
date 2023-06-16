@@ -2,23 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.Threading.Tasks;
 
 public class Embody : MonoBehaviour
 {
     private PhotonView photonView;
-    private GameObject parrentObject;
+    public GameObject parrentObject;
+    public 
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-
-        while (parrentObject == null)
-        {
-            parrentObject = GameObject.FindGameObjectWithTag("PlayerMain");
-            Debug.Log(parrentObject);
-        }
-        gameObject.transform.SetParent(parrentObject.transform);
-        transform.position = Vector3.zero;
-
+        Task T2 = FindParrentForEmbody();
+        T2.Start();
     }
     private void Update()
     {
@@ -34,5 +29,12 @@ public class Embody : MonoBehaviour
         {
             transform.position = parrentObject.transform.position;
         }
-    }   
+    }
+    public Task FindParrentForEmbody()
+    {
+        Task T1 = new Task(() => {
+            parrentObject = GameObject.FindGameObjectWithTag("PlayerMain");});
+        Debug.Log("Seeking parrent");
+        return T1;
+    }
 }
