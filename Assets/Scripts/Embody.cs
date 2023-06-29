@@ -12,14 +12,23 @@ public class Embody : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        parrentObject = GameObject.FindGameObjectWithTag("EmbodyContainer");
-        gameObject.transform.SetParent(parrentObject.transform);
-        Task T2 = FindParrentForEmbody();
-        T2.Start();
+        if(photonView.IsMine)
+        {
+            parrentObject = GameObject.FindGameObjectWithTag("EmbodyContainer");
+            //gameObject.transform.SetParent(parrentObject.transform);
+           // Task T2 = FindParrentForEmbody();
+            //T2.Start();
+        }
+        else
+        {
+            gameObject.layer = 0;
+
+        }
+       
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        //SetPositionEmbody();
+        SetPositionEmbody();
     }
     public void SetPositionEmbody()
     {

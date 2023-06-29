@@ -7,6 +7,8 @@ TagManager:
   - SamplesInfoPanel
   - PlayerMain
   - EmbodyContainer
+  - LookTarget
+  - OVRPlayer
   layers:
   - Default
   - TransparentFX

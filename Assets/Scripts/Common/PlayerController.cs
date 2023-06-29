@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     private float moveSpeed                 = 1f;
     private float rotationSpeed             = 100f;
@@ -16,21 +17,43 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
 
+    PhotonView ptonView;
+
+    GameObject OVRPlayer;
+
+    
+
     void Start()
     {
+        ptonView = GetComponent<PhotonView>();
         animator = GetComponent<Animator>();
         //camDistance = lookTarget.position - transform.position;
+        //StartCoroutine(nameof(LookTarget));
+        //OVRPlayer = GameObject.FindGameObjectWithTag("OVRPlayer");
     }
     void Update()
     {
-        PlayerMove();
+        if(ptonView.IsMine)
+        {
+            PlayerMove();
+            // PlayerRotate();
+            //if(lookTarget!=null)
+           // RotateEmbodyFollowPlayer();
+        }
+        
         //PlayerRotate();
 
         //FollowTarget();
     }
+    IEnumerator LookTarget()
+    {
+        yield return new WaitForSeconds(3f);
+        //OVRPlayer = GameObject.FindGameObjectWithTag("LookTarget");
+    }
 
     void PlayerMove()
     {
+        
         Vector2 moveInput = OVRInput.Get(moveAxis);
 
         // Calculate movement direction based on thumbstick input
@@ -70,6 +93,11 @@ public class PlayerController : MonoBehaviour
     {
         //transform.position = lookTarget.position - lookTarget.rotation * camDistance;
         //transform.LookAt(lookTarget);
+    }
+    public void RotateEmbodyFollowPlayer()
+    {
+        transform.rotation = GetComponent<Camera>().transform.rotation;
+        //transform.LookAt(lookTarget.transform, Vector3.forward);
     }
 
 }

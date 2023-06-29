@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1ffdee33ba8ad47a413ef2f095ab3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnline: 0
+  isOnline: 1
 --- !u!4 &313807513
 Transform:
   m_ObjectHideFlags: 0
@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EmbodyContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 8025195718314939628, guid: d278891fab728644d834be5267c988c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8201150604488198278, guid: d278891fab728644d834be5267c988c2, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -439,6 +443,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8231900133883059431, guid: d278891fab728644d834be5267c988c2, type: 3}
+      propertyPath: m_TagString
+      value: OVRPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231900133883059435, guid: d278891fab728644d834be5267c988c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d278891fab728644d834be5267c988c2, type: 3}
 --- !u!1 &943349633
@@ -476,7 +488,7 @@ MonoBehaviour:
   playerPrefabGirl: {fileID: 8770126066786014326, guid: 46d32437625fb6d4fbbac5a94ce433cc, type: 3}
   objectPrefab: {fileID: 3466754003255337564, guid: f8e52894ce24c84438133a00d9b70dc5, type: 3}
   spawPos: {fileID: 1698918706}
-  character: 0
+  character: 1
 --- !u!4 &943349635
 Transform:
   m_ObjectHideFlags: 0
